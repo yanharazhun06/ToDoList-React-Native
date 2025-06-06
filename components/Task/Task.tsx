@@ -4,13 +4,13 @@ import { taskStyles } from "./Task-styles";
 
 type TaskProps = {
     content: string,
-    index: number,
-    removeTask: (indexToRemove: number) => void
+    id: string,
+    removeTask: (idToRemove: string) => void
 }
 
 function Task({
     content,
-    index,
+    id,
     removeTask
 }: TaskProps) {
 
@@ -19,7 +19,7 @@ function Task({
     }
 
     return (
-        <Pressable onPress={() => removeTask(index)} style={({pressed}) => handlePress(pressed)}>
+        <Pressable onPress={() => removeTask(id)} style={({pressed}) => handlePress(pressed)}>
             <View>
                 <Text style={taskStyles.taskText}>{content}</Text>
             </View>
