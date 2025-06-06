@@ -20,7 +20,7 @@ export default function App() {
   };
 
   function addTask(): void {
-    if (task) setTaskList(prev => [...prev, {id: Math.random().toString(), task: task}]);
+    if (task.trim()) setTaskList(prev => [...prev, {id: Math.random().toString(), task: task}]);
     setTask('');
     Keyboard.dismiss();
   };
