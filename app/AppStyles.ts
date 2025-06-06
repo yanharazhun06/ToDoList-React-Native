@@ -12,15 +12,29 @@ export const appStyles = StyleSheet.create({
     marginTop: 75,
     fontSize: 21,
   },
+  divider: {
+    width: "90%",
+    marginTop: 10,
+    borderBottomWidth: 1,
+    borderColor: "lightgrey",
+  },
   taskContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "flex-end",
+    flex: 1,
+    marginTop: "50%",
     gap: 20,
-    width: "100%",
   },
   taskList: {
     flex: 1,
     width: "100%",
-  }
+  },
+  title: {
+    fontSize: 21,
+    alignSelf: "center",
+  },
+  buttons: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: 20,
+  },
 });

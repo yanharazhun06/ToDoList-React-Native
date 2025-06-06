@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 
-export const addTaskButtonStyles = StyleSheet.create({
+export const customButtonStyles = StyleSheet.create({
     addTaskButton: {
-    width: 80,
+    width: "40%",
     height: 40,
     display: "flex",
     alignItems: "center",
@@ -10,6 +10,7 @@ export const addTaskButtonStyles = StyleSheet.create({
     fontSize: 18,
     backgroundColor: "#57C785",
     borderRadius: 10,
+    alignSelf: "center",
   },
   pressed: {
     backgroundColor: '#3A8B5E'
