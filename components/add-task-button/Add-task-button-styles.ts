@@ -11,6 +11,9 @@ export const addTaskButtonStyles = StyleSheet.create({
     backgroundColor: "#57C785",
     borderRadius: 10,
   },
+  pressed: {
+    backgroundColor: '#3A8B5E'
+  },
   addTaskButtonText: {
     color: "#fff",
     fontSize: 18,
