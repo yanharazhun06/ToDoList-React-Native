@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const appStyles = StyleSheet.create({
   container: {
+    width: "100%",
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
@@ -13,8 +14,10 @@ export const appStyles = StyleSheet.create({
   },
   taskContainer: {
     flexDirection: "row",
+    justifyContent: "center",
     alignItems: "flex-end",
     gap: 20,
+    width: "100%",
   },
   input: {
     width: 200,
@@ -41,11 +44,13 @@ export const appStyles = StyleSheet.create({
   },
   taskList: {
     flex: 1,
+    width: "100%",
   },
   task: {
-    width: 300,
+    width: "80%",
     padding: 10,
     marginVertical: 10,
+    alignSelf: "center",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
