@@ -1,13 +1,13 @@
 import {
   Text,
-  TextInput,
   View,
-  TouchableOpacity,
   FlatList
 } from 'react-native';
 import { appStyles } from './AppStyles';
 import { useState, useCallback } from 'react';
-import Task from '../components/Task/Task';
+import Task from '../components/task/Task';
+import TaskInput from '../components/task-input/Task-input';
+import AddTaskButton from '../components/add-task-button/Add-task-button';
 
 export default function App() {
 
@@ -34,10 +34,8 @@ export default function App() {
     <View style={appStyles.container}>
       <Text style={appStyles.header}>Task Manager</Text>
       <View style={appStyles.taskContainer}>
-        <TextInput placeholder='Enter your task here' style={appStyles.input} value={task} onChangeText={handleOnChange}/>
-          <TouchableOpacity style={appStyles.addTaskButton} onPress={addTask}>
-            <Text style={appStyles.addTaskButtonText}>Add</Text>
-          </TouchableOpacity>
+        <TaskInput value={task} onChangeHandler={handleOnChange}/>
+        <AddTaskButton onPress={addTask} content='Add'/>
       </View>
       <View style={appStyles.taskList}>
         <FlatList

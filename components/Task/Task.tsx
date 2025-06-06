@@ -1,5 +1,6 @@
+import React from "react";
 import { TouchableOpacity, View, Text } from "react-native";
-import { taskStyles } from "./TaskStyles";
+import { taskStyles } from "./Task-styles";
 
 type TaskProps = {
     content: string,
@@ -22,4 +23,4 @@ function Task({
     );
 };
 
-export default Task;
+export default React.memo(Task);
