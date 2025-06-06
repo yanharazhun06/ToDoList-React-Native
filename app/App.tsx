@@ -3,7 +3,8 @@ import {
   TextInput,
   View,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  FlatList
 } from 'react-native';
 import { appStyles } from './AppStyles';
 import { useState } from 'react';
@@ -18,7 +19,7 @@ export default function App() {
   };
 
   function addTask(): void {
-    setTaskList(prev => [...prev, task]);
+    if (task) setTaskList(prev => [...prev, task]);
     setTask('');
   };
 
@@ -33,26 +34,19 @@ export default function App() {
     <View style={appStyles.container}>
       <Text style={appStyles.header}>Task Manager</Text>
       <View style={appStyles.taskContainer}>
-        <TextInput placeholder='Enter your task here' style={appStyles.input} value={task} onChangeText={(value: string) => handleOnChange(value)}/>
+        <TextInput placeholder='Enter your task here' style={appStyles.input} value={task} onChangeText={handleOnChange}/>
           <TouchableOpacity style={appStyles.addTaskButton} onPress={addTask}>
             <Text style={appStyles.addTaskButtonText}>Add</Text>
           </TouchableOpacity>
       </View>
       <View style={appStyles.taskList}>
-        <ScrollView>
-          {
-            taskList.length
-            ?
-            taskList.map((task, index) =>
-              <TouchableOpacity key={index} onPress={() => removeTask(index)}>
-                <View style={appStyles.task}>
-                  <Text style={appStyles.taskText}>{task}</Text>
-                </View>
-              </TouchableOpacity>)
-            :
-            null
-          }
-        </ScrollView>
+        <FlatList data={taskList} alwaysBounceVertical={false} renderItem={task => 
+            <TouchableOpacity key={task.index} onPress={() => removeTask(task.index)}>
+              <View style={appStyles.task}>
+                <Text style={appStyles.taskText}>{task.item}</Text>
+              </View>
+            </TouchableOpacity>}
+          />
       </View>
     </View>
   );
