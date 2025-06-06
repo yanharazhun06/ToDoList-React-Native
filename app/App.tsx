@@ -3,11 +3,11 @@ import {
   TextInput,
   View,
   TouchableOpacity,
-  ScrollView,
   FlatList
 } from 'react-native';
 import { appStyles } from './AppStyles';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+import Task from '../components/Task/Task';
 
 export default function App() {
 
@@ -23,12 +23,12 @@ export default function App() {
     setTask('');
   };
 
-  function removeTask(indexToRemove: number): void {
+  const removeTask = useCallback((indexToRemove: number): void => {
     setTaskList(prev => [
       ...prev.slice(0, indexToRemove),
       ...prev.slice(indexToRemove + 1)
     ]);
-  };
+  }, []);
 
   return (
     <View style={appStyles.container}>
@@ -40,13 +40,12 @@ export default function App() {
           </TouchableOpacity>
       </View>
       <View style={appStyles.taskList}>
-        <FlatList data={taskList} alwaysBounceVertical={false} renderItem={task => 
-            <TouchableOpacity key={task.index} onPress={() => removeTask(task.index)}>
-              <View style={appStyles.task}>
-                <Text style={appStyles.taskText}>{task.item}</Text>
-              </View>
-            </TouchableOpacity>}
-          />
+        <FlatList
+          data={taskList}
+          alwaysBounceVertical={false}
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={task => <Task content={task.item} index={task.index} removeTask={removeTask}/>}
+        />
       </View>
     </View>
   );
