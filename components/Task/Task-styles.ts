@@ -14,5 +14,8 @@ export const taskStyles = StyleSheet.create({
   taskText: {
     color: "white",
     fontSize: 18,
-  }
+  },
+  pressed: {
+    backgroundColor: '#3A8B5E'
+  },
 });

@@ -1,4 +1,4 @@
-import { TouchableOpacity, Text } from "react-native";
+import { Pressable, Text } from "react-native";
 import { addTaskButtonStyles } from "./Add-task-button-styles";
 
 type AddTaskButtonProps = {
@@ -11,10 +11,14 @@ function AddTaskButton({
     onPress
 }: AddTaskButtonProps) {
 
+    function handlePress(pressed: boolean) {
+        return [addTaskButtonStyles.addTaskButton, pressed && addTaskButtonStyles.pressed];
+    };
+
     return (
-        <TouchableOpacity style={addTaskButtonStyles.addTaskButton} onPress={onPress}>
+        <Pressable style={({pressed}) => handlePress(pressed)} onPress={onPress}>
             <Text style={addTaskButtonStyles.addTaskButtonText}>{content}</Text>
-        </TouchableOpacity>
+        </Pressable>
     );
 };
 

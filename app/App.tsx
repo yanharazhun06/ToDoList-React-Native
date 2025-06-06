@@ -1,10 +1,11 @@
 import {
   Text,
   View,
-  FlatList
+  FlatList,
+  Keyboard
 } from 'react-native';
-import { appStyles } from './AppStyles';
 import { useState, useCallback } from 'react';
+import { appStyles } from './AppStyles';
 import Task from '../components/task/Task';
 import TaskInput from '../components/task-input/Task-input';
 import AddTaskButton from '../components/add-task-button/Add-task-button';
@@ -12,22 +13,20 @@ import AddTaskButton from '../components/add-task-button/Add-task-button';
 export default function App() {
 
   const [task, setTask] = useState<string>('');
-  const [taskList, setTaskList] = useState<string[]>([]);
+  const [taskList, setTaskList] = useState<{id: string, task: string}[]>([]);
 
   function handleOnChange(value: string): void {
     setTask(value);
   };
 
   function addTask(): void {
-    if (task) setTaskList(prev => [...prev, task]);
+    if (task) setTaskList(prev => [...prev, {id: Math.random().toString(), task: task}]);
     setTask('');
+    Keyboard.dismiss();
   };
 
-  const removeTask = useCallback((indexToRemove: number): void => {
-    setTaskList(prev => [
-      ...prev.slice(0, indexToRemove),
-      ...prev.slice(indexToRemove + 1)
-    ]);
+  const removeTask = useCallback((idToRemove: string): void => {
+    setTaskList(prev => [...prev.filter(item => item.id !== idToRemove)]);
   }, []);
 
   return (
@@ -41,8 +40,8 @@ export default function App() {
         <FlatList
           data={taskList}
           alwaysBounceVertical={false}
-          keyExtractor={(_, index) => index.toString()}
-          renderItem={task => <Task content={task.item} index={task.index} removeTask={removeTask}/>}
+          keyExtractor={(item) => item.id}
+          renderItem={task => <Task content={task.item.task} id={task.item.id} removeTask={removeTask}/>}
         />
       </View>
     </View>

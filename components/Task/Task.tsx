@@ -1,25 +1,29 @@
 import React from "react";
-import { TouchableOpacity, View, Text } from "react-native";
+import { Pressable, View, Text } from "react-native";
 import { taskStyles } from "./Task-styles";
 
 type TaskProps = {
     content: string,
-    index: number,
-    removeTask: (indexToRemove: number) => void
+    id: string,
+    removeTask: (idToRemove: string) => void
 }
 
 function Task({
     content,
-    index,
+    id,
     removeTask
 }: TaskProps) {
 
+    function handlePress(pressed: boolean) {
+        return [taskStyles.task, pressed && taskStyles.pressed];
+    }
+
     return (
-        <TouchableOpacity onPress={() => removeTask(index)}>
-            <View style={taskStyles.task}>
+        <Pressable onPress={() => removeTask(id)} style={({pressed}) => handlePress(pressed)}>
+            <View>
                 <Text style={taskStyles.taskText}>{content}</Text>
             </View>
-        </TouchableOpacity>
+        </Pressable>
     );
 };
 
