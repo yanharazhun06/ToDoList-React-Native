@@ -4,6 +4,7 @@ import {
   FlatList,
   Keyboard,
   Modal,
+  Image,
 } from 'react-native';
 import { useState, useCallback } from 'react';
 import { appStyles } from './AppStyles';
@@ -36,7 +37,7 @@ export default function App() {
   return (
     <View style={appStyles.container}>
       <Text style={appStyles.header}>Task Manager</Text>
-      <CustomButton onPress={() => setModalVisibility(true)} content='Enter task'/>
+      <CustomButton onPress={() => setModalVisibility(true)} content='Enter task' variant='green'/>
       {
         Boolean(taskList.length)
         &&
@@ -52,11 +53,12 @@ export default function App() {
       </View>
       <Modal visible={modalVisibility} animationType="fade">
         <View style={appStyles.taskContainer}>
+          <Image source={require('../assets/images/goal.png')} style={appStyles.logo}/>
           <Text style={appStyles.title}>Add one or more!</Text>
-          <TaskInput value={task} onChangeHandler={handleOnChange}/>
+          <TaskInput value={task} onChangeHandler={handleOnChange} placeholder='Enter your task here'/>
           <View style={appStyles.buttons}>
-            <CustomButton onPress={() => setModalVisibility(false)} content='Done'/>
-            <CustomButton onPress={addTask} content='Add'/>
+            <CustomButton onPress={() => setModalVisibility(false)} content='Done' variant='white'/>
+            <CustomButton onPress={addTask} content='Add' variant='white'/>
           </View>
         </View>
       </Modal>

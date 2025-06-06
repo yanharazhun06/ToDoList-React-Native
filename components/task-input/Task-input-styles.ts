@@ -7,7 +7,8 @@ export const taskInputStyles = StyleSheet.create({
     padding: 10,
     fontSize: 18,
     borderBottomWidth: 1,
-    borderColor: "#57C785",
+    borderColor: "#fff",
     alignSelf:"center",
+    color: "#fff"
   },
 });

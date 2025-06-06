@@ -18,18 +18,25 @@ export const appStyles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: "lightgrey",
   },
-  taskContainer: {
-    flex: 1,
-    marginTop: "50%",
-    gap: 20,
-  },
   taskList: {
     flex: 1,
     width: "100%",
   },
+  taskContainer: {
+    flex: 1,
+    paddingTop: "30%",
+    gap: 20,
+    backgroundColor: "#57C785"
+  },
   title: {
     fontSize: 21,
     alignSelf: "center",
+    color: "#fff"
+  },
+  logo: {
+    width: 75,
+    height: 75,
+    alignSelf: 'center',
   },
   buttons: {
     width: "100%",
