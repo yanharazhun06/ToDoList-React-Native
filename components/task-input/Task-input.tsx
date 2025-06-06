@@ -4,15 +4,23 @@ import { taskInputStyles } from "./Task-input-styles";
 type TaskInputProps = {
     value: string,
     onChangeHandler: (value: string) => void,
+    placeholder: string,
 }
 
 function TaskInput({
     value,
-    onChangeHandler
+    onChangeHandler,
+    placeholder
 } : TaskInputProps) {
 
     return (
-        <TextInput placeholder='Enter your task here' style={taskInputStyles.input} value={value} onChangeText={onChangeHandler}/>
+        <TextInput
+            placeholder={placeholder}
+            style={taskInputStyles.input}
+            value={value}
+            onChangeText={onChangeHandler}
+            placeholderTextColor="rgba(255, 255, 255, 0.6)"
+        />
     );
 };
 
